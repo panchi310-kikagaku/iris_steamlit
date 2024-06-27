@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
 from sklearn.datasets import load_iris
+from PIL import Image
 
 # データセット読み込み
 iris = load_iris()
@@ -51,3 +52,8 @@ st.write(pred_df)
 name = pred_df.idxmax(axis=1).tolist()
 st.write('## Result')
 st.write('このアイリスはきっと',str(name[0]),'です!')
+
+img_path = './img/' + str(name[0]) + '.png'  # 拡張子を含めたパスに変更
+img = Image.open(img_path)
+st.image(img,caption = str(name[0]) , use_column_width = True)
+
